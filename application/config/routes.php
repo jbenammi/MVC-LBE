@@ -38,7 +38,14 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "Trips";
+$route['view_dashboard'] = "Trips/view_dashboard";
+$route['register'] = "Trips/register";
+$route['signin'] = "Trips/signin_process";
+$route['destination/(:num)'] = "Trips/view_destination/$1";
+$route['join/(:num)/(:num)'] = "Trips/join_trips/$1/$2";
+$route['logout'] = "Trips/logout";
+$route['new_trip'] = "Trips/new_trip";
 $route['404_override'] = '';
 
 
