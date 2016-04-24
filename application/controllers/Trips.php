@@ -19,6 +19,8 @@ class Trips extends CI_Controller{
 		$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
 		if($this->form_validation->run() === FALSE){
 			$errors = $this->form_validation->getErrorsArray();
+			var_dump($errors);
+			die();
 			$this->session->set_flashdata("errors", $errors);
 			redirect(base_url());
 		}
