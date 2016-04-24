@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = "http://".$_SERVER['HTTP_HOST'];
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = "http://".$_SERVER['HTTP_HOST'];
+$config['index_page'] = "";
 
 /*
 |--------------------------------------------------------------------------

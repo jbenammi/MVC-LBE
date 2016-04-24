@@ -50,8 +50,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = '127.0.0.1';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '1948zv1978';
-$db['default']['database'] = 'beltexam'; // CHANGE DB
+$db['default']['password'] = 'password';
+$db['default']['database'] = 'beltexam';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
