@@ -17,7 +17,7 @@ class Trips extends CI_Controller{
 		if($this->form_validation->run() === FALSE){
 			$errors = $this->form_validation->getErrorsArray();
 			$this->session->set_flashdata("errors", $errors);
-			redirect('../', 'redirect');
+			redirect('../', 'location');
 		}
 		else{
 			$this->load->model("Trip");
