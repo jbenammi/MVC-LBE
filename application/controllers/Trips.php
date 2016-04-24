@@ -21,7 +21,7 @@ class Trips extends CI_Controller{
 			redirect(base_url("/"));
 		}
 		else{
-			$this->load->model("Trip");
+			$this->load->model("trip");
 			$user_info = $this->input->post();
 			$add_user = $this->Trip->add_user($user_info);
 			if ($add_user){
@@ -48,7 +48,7 @@ class Trips extends CI_Controller{
 			redirect(base_url("/"));
 		}
 		else {
-			$this->load->model('Trip');
+			$this->load->model('trip');
 			$user_info = $this->input->post();
 			$user_signin = $this->Trip->signin($user_info);
 			if($user_signin) {
@@ -64,18 +64,18 @@ class Trips extends CI_Controller{
 
 	public function view_dashboard(){
 		$logged_info = $this->session->userdata('logged_info');
-		$this->load->model('Trip');
+		$this->load->model('trip');
 		$user_trips = $this->Trip->get_user_trips();
 		$this->load->view('user_dashboard', ['users_trips' => $user_trips]);
 	}
 
 	public function view_destination($trip_id){
-		$this->load->model('Trip');
+		$this->load->model('trip');
 		$trip_info = $this->Trip->get_trip_info($trip_id);
 		$this->load->view('planned_trip', ['trip_info' => $trip_info]);
 	}
 	public function join_trips($user_id, $trip_id){
-		$this->load->model('Trip');
+		$this->load->model('trip');
 		$this->Trip->join_trip($user_id, $trip_id);
 		redirect('/Trips/view_dashboard');
 	}
@@ -91,10 +91,6 @@ class Trips extends CI_Controller{
 	public function add_trips(){
 		$this->load->library('form_validation');
 		$this->load->helper('security');
-		// var_dump($trip_info);
-		// $today = date('Y-m-d');
-		// var_dump($today);
-		// die();
 		$this->form_validation->set_rules("destination", "Destination", "trim|required|xss_clean");
 		$this->form_validation->set_rules("description", "Description", "trim|required|xss_clean");
 		$this->form_validation->set_rules("date_from", "Travel Date From", "trim|required");
@@ -105,7 +101,7 @@ class Trips extends CI_Controller{
 			redirect(base_url("/new_trip"));
 		}
 		else {
-			$this->load->model('Trip');
+			$this->load->model('trip');
 			$trip_info = $this->input->post();
 			$this->Trip->add_new_trip($trip_info);
 			redirect('/Trips/view_dashboard');
