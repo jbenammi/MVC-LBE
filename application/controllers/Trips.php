@@ -18,7 +18,7 @@ class Trips extends CI_Controller{
 		if($this->form_validation->run() === FALSE){
 			$errors = $this->form_validation->getErrorsArray();
 			$this->session->set_flashdata("errors", $errors);
-			redirect('/index');
+			redirect($uri = base_url('/'));
 		}
 		else{
 			$this->load->model("Trip");
@@ -30,7 +30,7 @@ class Trips extends CI_Controller{
 			}
 			else{
 				$this->session->set_flashdata("login_error", "E-Mail Address is already registered");
-				redirect('/index');
+			redirect($uri = base_url('/'));
 			}
 		}
 	}
@@ -44,7 +44,7 @@ class Trips extends CI_Controller{
 		if($this->form_validation->run() == FALSE){
 			$errors = $this->form_validation->getErrorsArray();
 			$this->session->set_flashdata("errors2", $errors);
-			redirect('/index');
+			redirect($uri = base_url('/'));
 		}
 		else {
 			$this->load->model('Trip');
@@ -56,7 +56,7 @@ class Trips extends CI_Controller{
 			}
 			else {
 				$this->session->set_flashdata("login_error", "The E-Mail or Password information is incorrect.");
-				redirect('/index');
+			redirect($uri = base_url('/'));
 			}
 		}
 	}
