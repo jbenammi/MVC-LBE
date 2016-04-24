@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "Trips";
 $route['view_dashboard'] = "Trips/view_dashboard";
+// $route['error_login'] = "Trips/error_login";
 $route['register'] = "Trips/register";
 $route['signin'] = "Trips/signin_process";
 $route['destination/(:num)'] = "Trips/view_destination/$1";

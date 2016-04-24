@@ -6,6 +6,9 @@ class Trips extends CI_Controller{
 		public function index () {
 			$this->load->view('login_register');
 		}
+		public function error_login() {
+			$this->load->view('login_register');
+		}
 		public function register(){
 		$this->load->library('form_validation');
 		$this->load->helper('security');
@@ -17,7 +20,7 @@ class Trips extends CI_Controller{
 		if($this->form_validation->run() === FALSE){
 			$errors = $this->form_validation->getErrorsArray();
 			$this->session->set_flashdata("errors", $errors);
-			redirect('../', 'location');
+			redirect('/Trips/error_login');
 		}
 		else{
 			$this->load->model("Trip");
