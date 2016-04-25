@@ -18,12 +18,13 @@ $login_error = $this->session->flashdata('login_error');
 		<?php if(isset($login_error)){ ?>
 			<p class="warning"><?= $login_error; ?></p>
 		<?php  } ?>
+		<?php echo validation_errors(); ?>
  		<form id="Register" action="/register" method="post">
  			<fieldset>
 				<legend>Register</legend> 
                     <?php if(isset($errors['name'])){ ?>
                         <p class="warning"><?= $errors['name']; ?></p>
-                    <?php  } ?>			
+                    <?php  } ?>	
 				<label for="name">Name: <input type="text" placeholder="John Smith" name="name" /></label>
 	                <?php if(isset($errors['username'])){ ?>
 	                    <p class="warning"><?= $errors['username']; ?></p>
