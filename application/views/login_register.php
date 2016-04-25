@@ -52,6 +52,7 @@ $login_error = $this->session->flashdata('login_error');
 	                <?php if(isset($errors2['username'])){ ?>
 	                    <p class="warning"><?= $errors2['username']; ?></p>
 	                <?php  } ?>
+	                <?php echo form_error('username'); ?>
                 <label for="signin_username">Username: <input type="text" placeholder="something@something.com" name="username" /></label>
 	                <?php if(isset($errors2['password'])){ ?>
 	                    <p class="warning"><?= $errors2['password']; ?></p>
