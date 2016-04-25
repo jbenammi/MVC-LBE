@@ -3,6 +3,10 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Trips extends CI_Controller{
 
+		public function __construct (){
+			$this->load->library('form_validation');
+		}
+
 		public function index () {
 			$this->load->view('login_register');
 		}
@@ -45,7 +49,7 @@ class Trips extends CI_Controller{
 		$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
 
 		if($this->form_validation->run() == FALSE){
-			$errors = $this->form_validation->error_array();
+			$errors = $this->MY_form_validation->getErrorsArray();
 			var_dump($errors);
 			die();
 			// $this->session->set_flashdata("errors2", $errors);
