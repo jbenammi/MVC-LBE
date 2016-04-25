@@ -65,7 +65,8 @@ class Trips extends CI_Controller{
 		$logged_info = $this->session->userdata('logged_info');
 		$this->load->model('Trip');
 		$user_trips = $this->Trip->get_user_trips();
-		$this->load->view('user_dashboard', ['users_trips' => $user_trips]);
+		$trips_not_joined = $this->Trip->get_trips_not_joined();
+		$this->load->view('user_dashboard', ['users_trips' => $user_trips, 'trips_not_joined' => $trips_not_joined]);
 	}
 
 	public function view_destination($trip_id){
@@ -87,17 +88,44 @@ class Trips extends CI_Controller{
 		redirect('/');
 	}
 
+	public function compareDate_endDate() {
+	  $startDate = strtotime($_POST['startDate']);
+	  $endDate = strtotime($_POST['endDate']);
+
+	  if ($endDate > $startDate)
+	    return True;
+	  else {
+	    $this->form_validation->set_message('compareDate_endDate', '%s should be greater than trip start date.');
+	    return False;
+	  }
+	}
+
+	public function compareDate_startDate() {
+	  $startDate = strtotime($_POST['startDate']);
+	  $endDate = strtotime($_POST['endDate']);
+	  $today = strtotime(date('Y-m-d'));
+	  if ($startDate > $today)
+	    return True;
+	  else {
+	    $this->form_validation->set_message('compareDate_startDate', '%s should be set for a date in the future.');
+	    return False;
+	  }
+	}
+
 	public function add_trips(){
 		$this->load->library('form_validation');
 		$this->load->helper('security');
+
+		$validation = array(
+		  array('field' => 'startDate', 'label' => 'Travel Date From', 'rules' => 'required|callback_compareDate_startDate'),
+		  array('field' => 'endDate', 'label' => 'Travel End Date', 'rules' => 'required|callback_compareDate_endDate'),
+		);
+		$this->form_validation->set_rules($validation);
+		$this->form_validation->set_message('required', '%s is required.');
 		$this->form_validation->set_rules("destination", "Destination", "trim|required|xss_clean");
 		$this->form_validation->set_rules("description", "Description", "trim|required|xss_clean");
-		$this->form_validation->set_rules("date_from", "Travel Date From", "trim|required");
-		$this->form_validation->set_rules("date_to", "Travel Date To", "trim|required");
 		if($this->form_validation->run() === FALSE){
-			$errors = $this->form_validation->getErrorsArray();
-			$this->session->set_flashdata("errors", $errors);
-			redirect(base_url("/new_trip"));
+			$this->load->view('add_trip');
 		}
 		else {
 			$this->load->model('Trip');
@@ -105,6 +133,6 @@ class Trips extends CI_Controller{
 			$this->Trip->add_new_trip($trip_info);
 			redirect('/Trips/view_dashboard');
 			}
-	}	
+	}		
 }
  ?>

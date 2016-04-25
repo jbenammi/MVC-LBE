@@ -29,6 +29,11 @@ class Trip extends CI_Controller{
 		return $this->db->query($query)->result_array();
 	}
 
+	public function get_trips_not_joined ($id){
+	$query = "SELECT * FROM trips left join users on users.id = trip_creator_id where not trips.id in (SELECT trips.id FROM trips left JOIN user_trips ON user_trips.trips_id = trips.id left JOIN users ON user_trips.users_id = users.id where users.id = $id)";
+
+		return $this->db->query($query)->result_array();
+}
 	public function get_trip_info($id){
 		$query = "SELECT users.id AS user_id, users.name, trips.trip_creator_id, trips.id AS trip_id, trips.destination, trips.description, trips.traveldate_start, trips.traveldate_end FROM users JOIN user_trips ON user_trips.users_id = users.id JOIN trips ON user_trips.trips_id = trips.id WHERE trips.id = $id";
 		return $this->db->query($query)->result_array();

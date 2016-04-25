@@ -1,8 +1,9 @@
 <?php 
 $logged_info = $this->session->userdata('logged_info');
-// $users_trips and $others_trips will be available as passed variables.
+// $users_trips and $otrips_not_joined will be available as passed variables.
 // var_dump($logged_info);
 // var_dump($users_trips);
+var_dump($trips_not_joined);
 
  ?>
  <!DOCTYPE html>
