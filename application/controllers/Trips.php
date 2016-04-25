@@ -44,8 +44,6 @@ class Trips extends CI_Controller{
 
 
 		if($this->form_validation->run() == FALSE){
-			var_dump($this->input->post());
-			die();
 			$this->load->view('login_register');
 		
 		}

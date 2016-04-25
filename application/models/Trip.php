@@ -20,7 +20,7 @@ class Trip extends CI_Controller{
 
 	public function signin($user_info){
 		$query = "SELECT id, name, username FROM users WHERE username = ? AND password = ?";
-		$user = [$user_info['username'], $user_info['password']];
+		$user = [$user_info['username2'], $user_info['password2']];
 		return $this->db->query($query, $user)->row_array();
 	}
 
