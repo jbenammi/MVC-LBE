@@ -11,11 +11,13 @@ class Trips extends CI_Controller{
 			$this->load->view('login_register');
 		}
 		public function register(){
-		$this->form_validation->set_rules("email", "E-Mail", "trim|required|valid_email");
-		$this->form_validation->set_rules("confirmpass", "Confirm Password", "trim|required|matches[password]");
-		$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
-		$this->form_validation->set_rules("name", "Full Name", "trim|required|min_length[3]|xss_clean");
-		$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
+			$this->load->library('form_validation');
+			$this->load->helper('security');
+			$this->form_validation->set_rules("email", "E-Mail", "trim|required|valid_email");
+			$this->form_validation->set_rules("confirmpass", "Confirm Password", "trim|required|matches[password]");
+			$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
+			$this->form_validation->set_rules("name", "Full Name", "trim|required|min_length[3]|xss_clean");
+			$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
 		if($this->form_validation->run() === FALSE){
 			$errors = explode(., validation_errors());
 			$this->session->set_flashdata("errors", $errors);
@@ -37,8 +39,10 @@ class Trips extends CI_Controller{
 	}
 
 		public function signin_process(){
-		$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
-		$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
+			$this->load->library('form_validation');
+			$this->load->helper('security');
+			$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
+			$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
 
 		if($this->form_validation->run() == FALSE){
 			$something = validation_errors();
