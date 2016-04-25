@@ -66,6 +66,8 @@ class Trips extends CI_Controller{
 		$logged_info = $this->session->userdata('logged_info');
 		$this->load->model('Trip');
 		$user_trips = $this->Trip->get_user_trips();
+		var_dump($user_trips);
+		die();
 		$trips_not_joined = $this->Trip->get_trips_not_joined();
 		$this->load->view('user_dashboard', ['users_trips' => $user_trips, 'trips_not_joined' => $trips_not_joined]);
 	}
