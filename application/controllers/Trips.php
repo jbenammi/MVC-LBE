@@ -17,7 +17,7 @@ class Trips extends CI_Controller{
 		$this->form_validation->set_rules("name", "Full Name", "trim|required|min_length[3]|xss_clean");
 		$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
 		if($this->form_validation->run() === FALSE){
-			$errors = $this->form_validation->getErrorsArray();
+			$errors = explode(., validation_errors());
 			$this->session->set_flashdata("errors", $errors);
 			redirect('/');
 		}
@@ -41,7 +41,7 @@ class Trips extends CI_Controller{
 		$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
 
 		if($this->form_validation->run() == FALSE){
-			$errors = $this->form_validation->getErrorsArray();
+			$errors = explode(., validation_errors());
 			var_dump($errors);
 			die();
 			// $this->session->set_flashdata("errors2", $errors);
