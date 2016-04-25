@@ -30,4 +30,6 @@ ON user_trips.trips_id = trips.id
 WHERE trips.id = 2;
 
 
-
+SELECT trips.id FROM trips
+ORDER BY created_on DESC
+limit 1;

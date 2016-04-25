@@ -20,7 +20,7 @@ class Trips extends CI_Controller{
 		if($this->form_validation->run() === FALSE){
 			$errors = $this->form_validation->getErrorsArray();
 			$this->session->set_flashdata("errors", $errors);
-				redirect("/view_dashboard");
+			redirect('/');
 		}
 		else{
 			$this->load->model("Trip");
@@ -32,7 +32,7 @@ class Trips extends CI_Controller{
 			}
 			else{
 				$this->session->set_flashdata("login_error", "E-Mail Address is already registered");
-			redirect('../', 'location');
+			redirect('/');
 			}
 		}
 	}
@@ -46,7 +46,7 @@ class Trips extends CI_Controller{
 		if($this->form_validation->run() == FALSE){
 			$errors = $this->form_validation->getErrorsArray();
 			$this->session->set_flashdata("errors2", $errors);
-			redirect('../', 'location');
+			redirect('/');
 		}
 		else {
 			$this->load->model('Trip');
@@ -58,7 +58,7 @@ class Trips extends CI_Controller{
 			}
 			else {
 				$this->session->set_flashdata("login_error", "The E-Mail or Password information is incorrect.");
-			redirect('../', 'location');
+			redirect('/');
 			}
 		}
 	}
@@ -86,7 +86,7 @@ class Trips extends CI_Controller{
 
 	public function logout(){
 		$this->session->sess_destroy();
-		redirect('../');
+		redirect('/');
 	}
 
 	public function add_trips(){
