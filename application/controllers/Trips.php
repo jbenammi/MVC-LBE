@@ -46,7 +46,7 @@ class Trips extends CI_Controller{
 
 		if($this->form_validation->run() == FALSE){
 			$errors = validation_errors();
-			var_dump("errors");
+			var_dump($errors);
 			die();
 			// $this->session->set_flashdata("errors2", $errors);
 			redirect('/');
