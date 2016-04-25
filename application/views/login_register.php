@@ -37,10 +37,10 @@ $login_error = $this->session->flashdata('login_error');
  		<form id="login" action="/signin" method="post">
  			<fieldset>
  				<legend>Login</legend>
-	                <?php echo form_error('username'); ?>
-                <label for="signin_username">Username: <input type="text" placeholder="something@something.com" name="username" /></label>
-	                <?php echo form_error('password'); ?>
-                <label for="password">Password: <input type="password" placeholder="********" name="password" /></label>
+	                <?php echo form_error('username2'); ?>
+                <label for="signin_username">Username: <input type="text" placeholder="something@something.com" name="username2" /></label>
+	                <?php echo form_error('password2'); ?>
+                <label for="password">Password: <input type="password" placeholder="********" name="password2" /></label>
                 <input type="submit" name="action" value="Login" />
                 </form>
  			</fieldset>

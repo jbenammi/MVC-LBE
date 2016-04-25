@@ -39,8 +39,8 @@ class Trips extends CI_Controller{
 		public function signin_process(){
 			$this->load->library('form_validation');
 			$this->load->helper('security');
-			$this->form_validation->set_rules("username", "Username", "trim|required|min_length[3]|xss_clean");
-			$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
+			$this->form_validation->set_rules("username2", "Username", "trim|required|min_length[3]|xss_clean");
+			$this->form_validation->set_rules("password2", "Password", "trim|required|min_length[8]|do_hash");
 
 		if($this->form_validation->run() == FALSE){
 			$this->load->view('login_register');
