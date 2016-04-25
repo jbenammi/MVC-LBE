@@ -65,7 +65,7 @@ class Trips extends CI_Controller{
 	public function view_dashboard(){
 		$logged_info = $this->session->userdata('logged_info');
 		$this->load->model('Trip');
-		$user_trips = $this->Trip->get_user_trips();
+		$user_trips = $this->Trip->get_user_trips($logged_info['id']);
 		echo "<pre>";
 		var_dump($user_trips);
 		die();

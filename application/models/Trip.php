@@ -24,8 +24,8 @@ class Trip extends CI_Controller{
 		return $this->db->query($query, $user)->row_array();
 	}
 
-	public function get_user_trips(){
-		$query = "SELECT user_trips.joined_on, user_trips.trips_id AS u_t_id, users.name, users.id AS user_id, trips.trip_creator_id, trips.id as trip_id, trips.destination, trips.description, trips.traveldate_start, trips.traveldate_end FROM trips JOIN user_trips ON user_trips.trips_id = trips.id JOIN users ON user_trips.users_id = users.id";
+	public function get_user_trips($id){
+		$query = "SELECT user_trips.joined_on, user_trips.trips_id AS u_t_id, users.name, users.id AS user_id, trips.trip_creator_id, trips.id as trip_id, trips.destination, trips.description, trips.traveldate_start, trips.traveldate_end FROM trips JOIN user_trips ON user_trips.trips_id = trips.id JOIN users ON user_trips.users_id = users.id WHERE users.id = $id";
 		return $this->db->query($query)->result_array();
 	}
 
