@@ -41,9 +41,9 @@ class Trips extends CI_Controller{
 		$this->form_validation->set_rules("password", "Password", "trim|required|min_length[8]|do_hash");
 
 		if($this->form_validation->run() == FALSE){
-			$something = validation_errors();
-			$new_something = explode(., $something);
-			var_dump($new_something);
+			// $something = validation_errors();
+			// $new_something = explode(., $something);
+			var_dump(validation_errors());
 			die();
 			// $this->session->set_flashdata("errors2", $errors);
 			redirect('/');
